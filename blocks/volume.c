@@ -21,7 +21,7 @@ volumeu(char *str, int sigval)
         char buf[15];
         size_t l;
 
-        if (!(l = getcmdout(PULSEINFO, buf, sizeof buf - 1))) {
+        if (!(l = getcmdout((char *[]){SCRIPT("pulsemixer --get-volume"), NULL}, buf, sizeof buf - 1))) {
                 *str = '\0';
                 return 1;
         }

@@ -1,9 +1,9 @@
 #include "blocks/battery.h"
-#include "blocks/cputemp.h"
+// #include "blocks/cputemp.h"
 #include "blocks/calendar.h"
-#include "blocks/hotspot.h"
-#include "blocks/mail.h"
-#include "blocks/volume.h"
+// #include "blocks/hotspot.h"
+// #include "blocks/mail.h"
+// #include "blocks/volume.h"
 
 /* DELIMITERENDCHAR must be less than 32.
  * At max, DELIMITERENDCHAR - 1 number of clickable blocks are allowed.
@@ -42,11 +42,11 @@ static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
 
 static Block blocks[] = {
 /*      funcu                   funcc                   interval        signal */
-        { hotspotu,             hotspotc,               -1,             4 },
-        { calendaru,            calendarc,              1,              1 },
-        { mailu,                mailc,                  300,            3 },
-        { volumeu,              volumec,                0,              2 },
-        { cputempu,             cputempc,               2,              6 },
+        // { hotspotu,             hotspotc,               -1,             4 },
+        // { mailu,                mailc,                  300,            3 },
+        // { volumeu,              volumec,                0,              2 },
+        // { cputempu,             cputempc,               2,              6 },
         { batteryu,             batteryc,               10,             5 },
+        { calendaru,            calendarc,              1,              1 },
         { NULL } /* just to mark the end of the array */
 };
