@@ -3,9 +3,8 @@
 #include "../util.h"
 #include "calendar.h"
 
-#define ICON                    COL1 "" COL0
-
-#define TOGGLECALCURSE          (char *[]){ SCRIPT("sigdwm"), "scrt i 4", NULL }
+#define ICON_DATE                    COL0" "
+#define ICON_TIME                    COL0" "
 
 size_t
 calendaru(char *str, int sigval)
@@ -13,11 +12,5 @@ calendaru(char *str, int sigval)
         time_t t = time(NULL);
         struct tm tm = *localtime(&t);
 
-        return strftime(str, BLOCKLENGTH, ICON "%b %_d %a %_m %l:%M %p", &tm) + 1;
-}
-
-void
-calendarc(int button)
-{
-        cspawn(TOGGLECALCURSE);
+        return strftime(str, BLOCKLENGTH, ICON_DATE "%b %-m : %a %-d : %-l:%M %p", &tm) + 1;
 }
