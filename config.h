@@ -3,6 +3,7 @@
 #include "blocks/calendar.h"
 // #include "blocks/hotspot.h"
 // #include "blocks/mail.h"
+#include "blocks/ram.h"
 // #include "blocks/volume.h"
 
 /* DELIMITERENDCHAR must be less than 32.
@@ -46,6 +47,7 @@ static Block blocks[] = {
         // { mailu,                mailc,                  300,            3 },
         // { volumeu,              volumec,                0,              2 },
         // { cputempu,             cputempc,               2,              6 },
+        { ramu,             NULL,               1,             0 },
         { batteryu,             NULL,               30,             1 },
         { calendaru,            NULL,              1,              0 },
         { NULL } /* just to mark the end of the array */
