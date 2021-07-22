@@ -1,8 +1,8 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <unistd.h>
-
 #include "util.h"
 
 void
@@ -82,6 +82,20 @@ readint(const char *path, int *var) {
         if (!(fp = fopen(path, "r")))
                 return 0;
         if (fscanf(fp, "%d", var) != 1) {
+                fclose(fp);
+                return 0;
+        }
+        fclose(fp);
+        return 1;
+}
+
+int
+readint32(const char *path, uint32_t *var) {
+        FILE *fp;
+
+        if (!(fp = fopen(path, "r")))
+                return 0;
+        if (fscanf(fp, "%u", var) != 1) {
                 fclose(fp);
                 return 0;
         }

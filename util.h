@@ -18,4 +18,5 @@ void cspawn(char *const *arg);
 void csigself(int sig, int sigval);
 size_t getcmdout(char *const *arg, char *cmdout, size_t cmdoutlen);
 int readint(const char *path, int *var);
+int readint32(const char *path, uint32_t *var);
 void uspawn(char *const *arg);

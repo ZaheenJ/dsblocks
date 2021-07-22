@@ -1,4 +1,5 @@
 #include <limits.h>
+#include <stdint.h>
 #include <X11/Xlib.h>
 
 #define BLOCKLENGTH                     32
