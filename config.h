@@ -1,10 +1,11 @@
 #include "blocks/battery.h"
 // #include "blocks/cputemp.h"
 #include "blocks/cpu.h"
-#include "blocks/calendar.h"
+#include "blocks/date.h"
 // #include "blocks/hotspot.h"
 // #include "blocks/mail.h"
 #include "blocks/ram.h"
+#include "blocks/time.h"
 // #include "blocks/volume.h"
 
 /* DELIMITERENDCHAR must be less than 32.
@@ -51,6 +52,7 @@ static Block blocks[] = {
         { ramu,             NULL,               1,             0 },
         { cpuu,             NULL,               1,             0 },
         { batteryu,             NULL,               30,             1 },
-        { calendaru,            NULL,              1,              0 },
+        { dateu,            NULL,              1,              0 },
+        { timeu,            NULL,              1,              0 },
         { NULL } /* just to mark the end of the array */
 };

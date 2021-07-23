@@ -24,5 +24,5 @@ size_t cpuu(char *str, int sigval) {
 	}
 	freqAvg /= nThreads;
 
-	return SPRINTF(str, ICON " %.1f GHz", (float) freqAvg / 1000000);
+	return SPRINTF(str, COL3 ICON " %.1f GHz", (float) freqAvg / 1000000);
 }

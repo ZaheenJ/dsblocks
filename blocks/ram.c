@@ -18,5 +18,5 @@ size_t ramu(char *str, int sigval) {
 	memUsed = memTotal - memAvailable;
 	memUsedPercent = (memUsed / memTotal) * 100;
 
-	return SPRINTF(str, ICON " %.2f GB %.1f%%", memUsed / 1048576, memUsedPercent);
+	return SPRINTF(str, COL2 ICON " %.2f GB %.1f%%", memUsed / 1048576, memUsedPercent);
 }

@@ -7,17 +7,17 @@
 #define ICONe                           COL2 "" COL0 /* unexpected error */
 #define ICONa                           COL1 "" COL0 /* no battery */
 
-#define ICON0                           "" COL0
-#define ICON1                           "" COL0
-#define ICON2                           "" COL0
-#define ICON3                           "" COL0
-#define ICON4                           "" COL0
-#define ICON5                           "" COL0
-#define ICON6                           "" COL0
-#define ICON7                           "" COL0
-#define ICON8                           "" COL0
-#define ICON9                           "" COL0
-#define ICON_CHARGE 			"ﮣ" COL0
+#define ICON0                           ""
+#define ICON1                           ""
+#define ICON2                           ""
+#define ICON3                           ""
+#define ICON4                           ""
+#define ICON5                           ""
+#define ICON6                           ""
+#define ICON7                           ""
+#define ICON8                           ""
+#define ICON9                           ""
+#define ICON_CHARGE 			"ﮣ"
 
 #define ICON(bat)                       icons[(bat * (LENGTH(icons) - 1) + 50) / 100]
 
@@ -41,15 +41,15 @@ batteryu(char *str, int ac)
                 if (!readint(ACSTATEFILE, &ac))
                         return SPRINTF(str, ICONe "%d%%", bat);
                 if (ac) {
-                	return SPRINTF(str, "%s" ICON_CHARGE" %d%%", ICON(bat), bat);
+                	return SPRINTF(str, COL4 "%s" ICON_CHARGE" %d%%", ICON(bat), bat);
                 } else {
-                        return SPRINTF(str, "%s %d%%", ICON(bat), bat);
+                        return SPRINTF(str, COL4 "%s %d%%", ICON(bat), bat);
                 }
         /* charger plugged in */
         } else if (ac) {
-                return SPRINTF(str, "%s" ICON_CHARGE" %d%%", ICON(bat), bat);
+                return SPRINTF(str, COL4 "%s" ICON_CHARGE" %d%%", ICON(bat), bat);
         /* charger plugged out */
         } else {
-                return SPRINTF(str, "%s%d%%", ICON(bat), bat);
+                return SPRINTF(str, COL4 "%s%d%%", ICON(bat), bat);
         }
 }
