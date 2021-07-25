@@ -24,7 +24,7 @@ size_t cpuu(char *str, int sigval) {
 	}
 	freqAvg /= nThreads;
 
-	return SPRINTF(str, COL3 ICON " %.1f GHz %.1f%%", (float) freqAvg / 1000000, cpuPercent(10000));
+	return SPRINTF(str, COL3 ICON " %.1f GHz %.1f%%", (float) freqAvg / 1000000, cpuPercent(20000));
 }
 
 float cpuPercent(uint32_t microseconds) {

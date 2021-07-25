@@ -6,7 +6,7 @@
 // #include "blocks/mail.h"
 #include "blocks/ram.h"
 #include "blocks/time.h"
-// #include "blocks/volume.h"
+#include "blocks/volume.h"
 
 /* DELIMITERENDCHAR must be less than 32.
  * At max, DELIMITERENDCHAR - 1 number of clickable blocks are allowed.
@@ -49,6 +49,7 @@ static Block blocks[] = {
         // { mailu,                mailc,                  300,            3 },
         // { volumeu,              volumec,                0,              2 },
         // { cputempu,             cputempc,               2,              6 },
+        { volumeu,             volumec,               0,             2 },
         { ramu,             NULL,               1,             0 },
         { cpuu,             NULL,               1,             0 },
         { batteryu,             NULL,               30,             1 },

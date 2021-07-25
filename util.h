@@ -8,26 +8,8 @@
 #define COL5                            "\x11" /* mail block - frozen */
 #define COL6                            "\x12" /* mail block - frozen */
 
-#define SCRIPT(name)                    "/home/ashish/.scripts/"name
-#define TERMCMD(cmd)                    cspawn((char *[]){ "termite", "-e", cmd, NULL })
-
-#define SPRINTF(str, ...)               ({ \
-                                                int len = snprintf(str, BLOCKLENGTH, __VA_ARGS__); \
-                                                len < BLOCKLENGTH ? len + 1 : BLOCKLENGTH; \
-                                        })
-
-
-#define SCRIPT(name)                    "/home/ashish/.scripts/"name
-#define TERMCMD(cmd)                    cspawn((char *[]){ "termite", "-e", cmd, NULL })
-
-#define SPRINTF(str, ...)               ({ \
-                                                int len = snprintf(str, BLOCKLENGTH, __VA_ARGS__); \
-                                                len < BLOCKLENGTH ? len + 1 : BLOCKLENGTH; \
-                                        })
-
-
-#define SCRIPT(name)                    "/home/ashish/.scripts/"name
-#define TERMCMD(cmd)                    cspawn((char *[]){ "termite", "-e", cmd, NULL })
+#define SCRIPT(name)                    "/home/zaheen/.local/bin/"name
+#define TERMCMD(cmd)                    cspawn((char *[]){ "st", "-e", cmd, NULL })
 
 #define SPRINTF(str, ...)               ({ \
                                                 int len = snprintf(str, BLOCKLENGTH, __VA_ARGS__); \

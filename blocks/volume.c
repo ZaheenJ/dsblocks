@@ -1,32 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../util.h"
 #include "volume.h"
 
-#define ICONsn                          COL1 "" COL0
-#define ICONsm                          COL2 "" COL0
-#define ICONhn                          COL1 "" COL0
-#define ICONhm                          COL2 "" COL0
+#define ICON_MUTED 			"婢"
+#define ICON_LOW                        "奄"
+#define ICON_MEDIUM                     "奔"
+#define ICON_HIGH                       "墳"
 
-#define PULSEINFO                       (char *[]){ SCRIPT("pulse_info.sh"), NULL }
-
-#define PAVUCONTROL                     (char *[]){ "pavucontrol-qt", NULL }
-#define NORMALIZEVOLUME                 (char *[]){ SCRIPT("pulse_normalize.sh"), NULL }
+#define PULSEMIXER                      (char *[]){ "pulsemixer", NULL }
 #define TOGGLEMUTE                      (char *[]){ "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL }
 
 size_t
 volumeu(char *str, int sigval)
 {
-        static char *icons[] = { ICONsn, ICONsm, ICONhn, ICONhm };
-        char buf[15];
-        size_t l;
+	uint8_t volume, mute;
+	FILE *fd = popen("pulsemixer --get-volume", "r");
 
-        if (!(l = getcmdout((char *[]){SCRIPT("pulsemixer --get-volume"), NULL}, buf, sizeof buf - 1))) {
-                *str = '\0';
-                return 1;
-        }
-        buf[l] = '\0';
-        return SPRINTF(str, "%s%s", icons[buf[0] - '0'], buf + 1);
+	if (fscanf(fd, "%hhu", &volume) != 1)
+		return 1;
+	
+	pclose(fd);
+	fd = popen("pulsemixer --get-mute", "r");
+	
+	if (fscanf(fd, "%hhu", &mute) != 1)
+		return 1;
+	pclose(fd);
+
+	if (mute)
+        	return SPRINTF(str, COL1 ICON_MUTED);
+	else if (volume < 33)
+        	return SPRINTF(str, COL1 ICON_LOW " %hhu", volume);
+	else if (volume < 66)
+        	return SPRINTF(str, COL1 ICON_MEDIUM " %hhu", volume);
+	else
+        	return SPRINTF(str, COL1 ICON_HIGH " %hhu", volume);
 }
 
 void
@@ -36,11 +45,8 @@ volumec(int button)
                 case 1:
                         cspawn(TOGGLEMUTE);
                         break;
-                case 2:
-                        cspawn(NORMALIZEVOLUME);
-                        break;
                 case 3:
-                        cspawn(PAVUCONTROL);
+                        cspawn(PULSEMIXER);
                         break;
         }
 }
